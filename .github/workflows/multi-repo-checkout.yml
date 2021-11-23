@@ -1,0 +1,27 @@
+name: Pipeline to build from the-code-repo
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+  build-the-code-repo:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out the pipeline repository
+      - uses: actions/checkout@v2
+        with:
+          path: pipeline 
+      
+      # Checks-out your code repository
+      - uses: actions/checkout@v2
+        with:
+          repository: PrLemon/the-code-repo
+          path: code
+          # token: '${{secrets.ORG_TOKEN}}'
+          ssh-key: '${{secrets.ORG_SSHKEY}}'
+          
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          ls -lah

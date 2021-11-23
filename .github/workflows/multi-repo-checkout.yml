@@ -9,19 +9,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out the pipeline repository
-      - uses: actions/checkout@v2
+      - name: Checking out Repo 1 (self) and saving it to the-controller-repo directory 
+        uses: actions/checkout@v2
         with:
-          path: pipeline 
+          path: the-controller-repo 
       
       # Checks-out your code repository
-      - uses: actions/checkout@v2
+      - name: Checking out another repo and saving it to the-tester-repo directory 
+        uses: actions/checkout@v2
         with:
-          repository: PrLemon/the-code-repo
-          path: code
-          # token: '${{secrets.ORG_TOKEN}}'
-          ssh-key: '${{secrets.ORG_SSHKEY}}'
+          repository: rohitnb/the-tester-repo
+          path: the-tester-repo
+          token: '${{secrets.GH_PAT}}'
+          # ssh-key: '${{secrets.ORG_SSHKEY}}'
           
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Running commands
         run: |
+          ls -lah
+          pwd
+          cd the-controller-repo
+          ls -lah
+          cd ../the-tester-repo
           ls -lah

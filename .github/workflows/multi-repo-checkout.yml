@@ -30,5 +30,7 @@ jobs:
           pwd
           cd the-controller-repo
           ls -lah
+          pwd
           cd ../the-tester-repo
           ls -lah
+          pwd

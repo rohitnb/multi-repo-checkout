@@ -1,4 +1,4 @@
-name: Pipeline to build from the-code-repo
+name: Actions workflows to check out multiple repos
 
 # Controls when the workflow will run
 on:
